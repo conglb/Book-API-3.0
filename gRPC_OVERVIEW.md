@@ -44,4 +44,10 @@ service BookShelf {
 -   Not intended as an application-lever API
     *   Because of no support for protobufs
 
-
+## Example
+### Book Manager
+Client be able to insert, get information a book in database.
+Link project:
+```html
+https://github.com/conglb/Book-API-3.0
+```
