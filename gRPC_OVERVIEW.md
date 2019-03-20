@@ -9,8 +9,28 @@
 #### IDL to describe service API
 ##### Protocol Buffers IDL
 Define a service in a .proto file using Protocol Buffers IDL
-```angular2html
+```xml
+syntax = "proto3";
 
+message Book {
+  string name = 1;
+  int32 id = 2;
+  string author = 3;
+  int32 ISBN = 4;
+}
+
+message BookId {
+    int32 id = 2;
+}
+
+message Ack {
+    int32 book = 5;
+}
+
+service BookShelf {
+  rpc getBook(BookId) returns (Book);
+  rpc insertBook(Book) returns (Ack);
+}
 ```
 -   Generate server and client stub code using the protocol buffer complier
 -   Moreover, it also help data serialization
