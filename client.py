@@ -34,7 +34,7 @@ def run():
             author="Robert",
             ISBN=123456789,
         ))
-    print("Acknowledge: " + response.message)
+    print("Acknowledge: " + str(response.book))
 
 
 if __name__ == '__main__':

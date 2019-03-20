@@ -19,21 +19,21 @@ import logging
 
 import grpc
 
-import helloworld_pb2
-import helloworld_pb2_grpc
+import bookshelf_pb2
+import bookshelf_pb2_grpc
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
-class Greeter(helloworld_pb2_grpc.GreeterServicer):
+class BookShelf(bookshelf_pb2_grpc.BookShelfServicer):
 
-    def SayHello(self, request, context):
-        return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
+    def insertBook(self, request, context):
+        return bookshelf_pb2.Ack(book=1)
 
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    helloworld_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+    bookshelf_pb2_grpc.add_BookShelfServicer_to_server(BookShelf(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     try:
